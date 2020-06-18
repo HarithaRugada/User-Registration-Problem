@@ -45,4 +45,44 @@ public class UserRegistrationTest
         Assert.assertFalse(isValid);
     }
 
+    @Test
+    public void givenLastName_WhenProper_ShouldReturnTrue()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validateLastName("Rugada");
+        Assert.assertTrue(isValid);
+    }
+
+    @Test
+    public void givenLastName_WhenNotProper_Length_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validateLastName("Ru");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenLastName_WhenNotProper_ForUpperCase_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validateLastName("rugada");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenLastName_WhenNotProper_ForSpecialCharacter_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validateLastName("Rug.ada");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenLastName_WhenNotProper_ForNumber_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validateLastName("Rugada123");
+        Assert.assertFalse(isValid);
+    }
+
 }
