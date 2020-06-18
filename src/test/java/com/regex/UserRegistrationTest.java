@@ -183,4 +183,20 @@ public class UserRegistrationTest
         boolean isValid=userValidation.validatePhoneNumber("9876543210");
         Assert.assertFalse(isValid);
     }
+
+    @Test
+    public void givenPassword_WhenProper_Length_ShouldReturnTrue()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePassword("abcdefgh");
+        Assert.assertTrue(isValid);
+    }
+
+    @Test
+    public void givenPassword_WhenNotProper_Length_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePassword("abc");
+        Assert.assertFalse(isValid);
+    }
 }

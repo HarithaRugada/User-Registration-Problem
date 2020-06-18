@@ -21,14 +21,6 @@ public class UserValidation
         return pattern.matcher(lastName).matches();
     }
 
-    public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
-
-    public boolean validatePhoneNumber(String phoneNumber)
-    {
-        Pattern pattern=Pattern.compile(PHONE_NUMBER_REGEX);
-        return pattern.matcher(phoneNumber).matches();
-    }
-
     public static class ValidateEmail
     {
         private Pattern pattern;
@@ -44,5 +36,21 @@ public class UserValidation
         {
             return pattern.matcher(email).matches();
         }
+    }
+
+    public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
+
+    public boolean validatePhoneNumber(String phoneNumber)
+    {
+        Pattern pattern=Pattern.compile(PHONE_NUMBER_REGEX);
+        return pattern.matcher(phoneNumber).matches();
+    }
+
+    public static final String PASSWORD_REGEX="[a-z]{8,}";
+
+    public boolean validatePassword(String password)
+    {
+        Pattern pattern=Pattern.compile(PASSWORD_REGEX);
+        return pattern.matcher(password).matches();
     }
 }
