@@ -21,13 +21,21 @@ public class UserValidation
         return pattern.matcher(lastName).matches();
     }
 
-    public class ValidateEmail
+    public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
+
+    public boolean validatePhoneNumber(String phoneNumber)
+    {
+        Pattern pattern=Pattern.compile(PHONE_NUMBER_REGEX);
+        return pattern.matcher(phoneNumber).matches();
+    }
+
+    public static class ValidateEmail
     {
         private Pattern pattern;
         private Matcher matcher;
-        public static final String EMAIL_REGEX = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+        public static final String EMAIL_REGEX = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$";
 
-        public boolean validateEmail()
+        public void validateEmail()
         {
             pattern = Pattern.compile(EMAIL_REGEX);
         }

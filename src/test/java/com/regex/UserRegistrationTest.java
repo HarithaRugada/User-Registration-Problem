@@ -94,22 +94,26 @@ public class UserRegistrationTest
     }
 
     @RunWith(Parameterized.class)
-    public class ValidateEmailTest {
+    public static class ValidateEmailTest
+    {
         private String arg;
-        private static ValidateEmail validateEmail;
+        private static UserValidation.ValidateEmail validateEmail;
         private Boolean expectedValidation;
 
-        public void ValidateEmailTest(String str, Boolean expectedValidation) {
+        public void ValidateEmailTest(String str, Boolean expectedValidation)
+        {
             this.arg = str;
             this.expectedValidation = expectedValidation;
         }
 
         @BeforeClass
-        public static void initialize() {
-            validateEmail = new ValidateEmail();
+        public void initialize()
+        {
+            validateEmail = new UserValidation.ValidateEmail();
+        }
 
             @Parameterized.Parameters
-            public static Collection<Object[]> data ()
+            public static Collection<Object[]> data()
             {
                 Object[][] data = new Object[][]
                         {
@@ -143,10 +147,40 @@ public class UserRegistrationTest
             @Test
             public void test()
             {
-                Boolean isValid = userValidation.validateEmail.validate(this.arg);
+                Boolean isValid = validateEmail.validate(this.arg);
                 assertEquals("Result", this.expectedValidation,isValid);
             }
         }
+
+    @Test
+    public void givenPhoneNumber_WhenProper_ShouldReturnTrue()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePhoneNumber("91 9876543210");
+        Assert.assertTrue(isValid);
     }
 
+    @Test
+    public void givenPhoneNumber_WhenNotProper_Length_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePhoneNumber("91 903229");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNotProper_Code_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePhoneNumber("87 9876543210");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNotProper_NoCode_ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePhoneNumber("9876543210");
+        Assert.assertFalse(isValid);
+    }
 }
