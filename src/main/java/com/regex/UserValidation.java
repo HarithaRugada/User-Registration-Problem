@@ -7,13 +7,20 @@ public class UserValidation
 {
     public static final String FIRST_NAME_REGEX="^[A-Z]{1}[A-Za-z]{2,}$";
 
+    public static final String LAST_NAME_REGEX="^[A-Z]{1}[A-Za-z]{2,}$";
+
+    public static final String EMAIL_REGEX = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$";
+
+    public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
+
+    public static final String PASSWORD_REGEX="(?=.*[A-Z])(?=.*[0-9])(?=.*[*&^%$#@!])[A_Za-z0-9]{8,}";
+
+
     public boolean validateFirstName(String firstName)
     {
         Pattern pattern=Pattern.compile(FIRST_NAME_REGEX);
         return pattern.matcher(firstName).matches();
     }
-
-    public static final String LAST_NAME_REGEX="^[A-Z]{1}[A-Za-z]{2,}$";
 
     public boolean validateLastName(String lastName)
     {
@@ -25,7 +32,6 @@ public class UserValidation
     {
         private Pattern pattern;
         private Matcher matcher;
-        public static final String EMAIL_REGEX = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$";
 
         public void validateEmail()
         {
@@ -38,15 +44,11 @@ public class UserValidation
         }
     }
 
-    public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
-
     public boolean validatePhoneNumber(String phoneNumber)
     {
         Pattern pattern=Pattern.compile(PHONE_NUMBER_REGEX);
         return pattern.matcher(phoneNumber).matches();
     }
-
-    public static final String PASSWORD_REGEX="(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[*&^%$#@!])[A_Za-z0-9]{8,}";
 
     public boolean validatePassword(String password)
     {
