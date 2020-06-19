@@ -188,12 +188,12 @@ public class UserRegistrationTest
     public void givenPassword_WhenProper_Length_Capital_ShouldReturnTrue()
     {
         UserValidation userValidation=new UserValidation();
-        boolean isValid=userValidation.validatePassword("abcdAefgh");
+        boolean isValid=userValidation.validatePassword("ab1cdAefgh");
         Assert.assertTrue(isValid);
     }
 
     @Test
-    public void givenPassword_WhenProper_Length_NoCapital_ShouldReturnFalse()
+    public void givenPassword_WhenNotProper_NoCapital_NoNumeric_ShouldReturnFalse()
     {
         UserValidation userValidation=new UserValidation();
         boolean isValid=userValidation.validatePassword("abcdefgh");
@@ -201,10 +201,18 @@ public class UserRegistrationTest
     }
 
     @Test
-    public void givenPassword_WhenNotProper_Length_ShouldReturnFalse()
+    public void givenPassword_WhenNotProper_NoLength__ShouldReturnFalse()
     {
         UserValidation userValidation=new UserValidation();
-        boolean isValid=userValidation.validatePassword("abCc");
+        boolean isValid=userValidation.validatePassword("a1bCc");
+        Assert.assertFalse(isValid);
+    }
+
+    @Test
+    public void givenPassword_WhenNotProper_NoNumeric__ShouldReturnFalse()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePassword("aferesrbCc");
         Assert.assertFalse(isValid);
     }
 }

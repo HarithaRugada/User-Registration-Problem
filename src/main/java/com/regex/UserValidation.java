@@ -46,7 +46,7 @@ public class UserValidation
         return pattern.matcher(phoneNumber).matches();
     }
 
-    public static final String PASSWORD_REGEX="(?=.*?[A-Z])[A_Za-z0-9]{8,}";
+    public static final String PASSWORD_REGEX="(?=.*?[A-Z])(?=.*?[0-9])[A_Za-z0-9]{8,}";
 
     public boolean validatePassword(String password)
     {
