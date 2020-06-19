@@ -148,7 +148,7 @@ public class UserRegistrationTest
             public void test()
             {
                 Boolean isValid = validateEmail.validate(this.arg);
-                assertEquals("Result", this.expectedValidation,isValid);
+                assertEquals(this.expectedValidation,isValid);
             }
         }
 
@@ -185,18 +185,26 @@ public class UserRegistrationTest
     }
 
     @Test
-    public void givenPassword_WhenProper_Length_ShouldReturnTrue()
+    public void givenPassword_WhenProper_Length_Capital_ShouldReturnTrue()
+    {
+        UserValidation userValidation=new UserValidation();
+        boolean isValid=userValidation.validatePassword("abcdAefgh");
+        Assert.assertTrue(isValid);
+    }
+
+    @Test
+    public void givenPassword_WhenProper_Length_NoCapital_ShouldReturnFalse()
     {
         UserValidation userValidation=new UserValidation();
         boolean isValid=userValidation.validatePassword("abcdefgh");
-        Assert.assertTrue(isValid);
+        Assert.assertFalse(isValid);
     }
 
     @Test
     public void givenPassword_WhenNotProper_Length_ShouldReturnFalse()
     {
         UserValidation userValidation=new UserValidation();
-        boolean isValid=userValidation.validatePassword("abc");
+        boolean isValid=userValidation.validatePassword("abCc");
         Assert.assertFalse(isValid);
     }
 }
