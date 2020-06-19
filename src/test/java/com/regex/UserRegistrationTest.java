@@ -117,6 +117,7 @@ public class UserRegistrationTest
             {
                 Object[][] data = new Object[][]
                         {
+                                //Test cases which are expected to be true
                                 {"abc@yahoo.com", true},
                                 {"abc-100@yahoo.com", true},
                                 {"abc.100@yahoo.com", true},
@@ -127,6 +128,7 @@ public class UserRegistrationTest
                                 {"abc@gmail.com.com", true},
                                 {"abc+100@gmail.com", true},
 
+                                //Test cases which are expected to be false
                                 {"abc", false},
                                 {"abc@.com.my", false},
                                 {"abc123@gmail.a", false},
