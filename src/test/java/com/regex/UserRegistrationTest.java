@@ -88,13 +88,13 @@ public class UserRegistrationTest
     @RunWith(Parameterized.class)
     public static class ValidateEmailTest
     {
-        private String arg;
+        private String emailId;
         private static UserValidation.ValidateEmail validateEmail;
         private Boolean expectedValidation;
 
-        public void ValidateEmailTest(String str, Boolean expectedValidation)
+        public void ValidateEmailTest(String emailId, Boolean expectedValidation)
         {
-            this.arg = str;
+            this.emailId = emailId;
             this.expectedValidation = expectedValidation;
         }
 
@@ -105,35 +105,35 @@ public class UserRegistrationTest
         }
 
             @Parameterized.Parameters
-            public static Collection<Object[]> data()
+            public static Collection data()
             {
                 Object[][] data = new Object[][]
                         {
                                 //Test cases which are expected to be true
-                               // {"abc@yahoo.com", true},
-                               // {"abc-100@yahoo.com", true},
-                                //{"abc.100@yahoo.com", true},
-                               // {"abc111@abc.com", true},
-                                //{"abc-100@abc.net", true},
-                                //{"abc.100@abc.com.au", true},
-                               // {"abc@1.com", true},
-                                //{"abc@gmail.com.com", true},
-                                //{"abc+100@gmail.com", true},
+                                {"abc@yahoo.com", true},
+                                {"abc-100@yahoo.com", true},
+                                {"abc.100@yahoo.com", true},
+                                {"abc111@abc.com", true},
+                                {"abc-100@abc.net", true},
+                                {"abc.100@abc.com.au", true},
+                                {"abc@1.com", true},
+                                {"abc@gmail.com.com", true},
+                                {"abc+100@gmail.com", true},
 
                                 //Test cases which are expected to be false
-                               // {"abc", false},
-                               // {"abc@.com.my", false},
-                               // {"abc123@gmail.a", false},
-                               // {"abc123@.com", false},
-                               // {"abc123@.com.com", false},
-                               // {".abc@abc.com", false},
-                               // {"abc()*@gmail.com", false},
-                               // {"abc@%*.com", false},
-                               // {"abc..2002@gmail.com", false},
-                               // {"abc.@gmail.com", false},
-                               // {"abc@abc@gmail.com", false},
-                                //{"abc@gmail.com.1a", false},
-                               // {"abc@gmail.com.aa.au", false}
+                                {"abc", false},
+                                {"abc@.com.my", false},
+                                {"abc123@gmail.a", false},
+                                {"abc123@.com", false},
+                                {"abc123@.com.com", false},
+                                {".abc@abc.com", false},
+                                {"abc()*@gmail.com", false},
+                                {"abc@%*.com", false},
+                                {"abc..2002@gmail.com", false},
+                                {"abc.@gmail.com", false},
+                                {"abc@abc@gmail.com", false},
+                                {"abc@gmail.com.1a", false},
+                                {"abc@gmail.com.aa.au", false}
                         };
                 return Arrays.asList(data);
             }
@@ -141,7 +141,7 @@ public class UserRegistrationTest
             @Test
             public void test()
             {
-                Boolean isValid = validateEmail.validate(this.arg);
+                Boolean isValid = validateEmail.validate(this.emailId);
                 assertEquals(this.expectedValidation,isValid);
             }
         }
