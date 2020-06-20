@@ -13,7 +13,7 @@ public class UserValidation
 
     public static final String PHONE_NUMBER_REGEX="^(91)[\\s][0-9]{10}$";
 
-    public static final String PASSWORD_REGEX="(?=.*[A-Z])(?=.*[0-9])(?=.*[*&^%$#@!])[A_Za-z0-9]{8,}";
+    public static final String PASSWORD_REGEX="^(?=.*[A-Z])(?=.*[0-9])(?=.*[*&^%$#@!])[A_Za-z0-9].{8,}$";
 
 
     public boolean validateFirstName(String firstName)

@@ -99,7 +99,7 @@ public class UserRegistrationTest
         }
 
         @BeforeClass
-        public void initialize()
+        public static void initialize()
         {
             validateEmail = new UserValidation.ValidateEmail();
         }
